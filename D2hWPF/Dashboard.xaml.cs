@@ -19,10 +19,30 @@ namespace D2hWPF
     /// </summary>
     public partial class Dashboard : Window
     {
+        public string Username { get; set; } = "Sagar Gavand";
+        public List<Person> Users { get; set; }
+
 
         public Dashboard()
         {
             InitializeComponent();
+            this.Users = new List<Person>
+            {
+                new Person(){ Name = "Sagar",Group="D",Id=1},
+                new Person(){ Name = "Atharva",Group="C",Id=2},
+                new Person(){ Name = "Suraj",Group="B",Id=3},
+                 new Person(){ Name = "Sagar",Group="D",Id=1},
+                new Person(){ Name = "Atharva",Group="C",Id=2},
+                new Person(){ Name = "Suraj",Group="B",Id=3},
+                new Person(){ Name = "Sagar",Group="D",Id=1},
+                new Person(){ Name = "Atharva",Group="C",Id=2},
+                new Person(){ Name = "Suraj",Group="B",Id=3},
+                new Person(){ Name = "Suraj",Group="B",Id=3},
+                new Person(){ Name = "Suraj",Group="B",Id=3},
+            };
+
+            this.DataContext = this;
         }
     }
+
 }

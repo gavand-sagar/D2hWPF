@@ -24,6 +24,7 @@ namespace D2hWPF
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = this;
         }
 
         private void About_Button_Click(object sender, RoutedEventArgs e)
@@ -31,6 +32,7 @@ namespace D2hWPF
             this.ContactPage.Visibility = Visibility.Hidden;
             this.GalleryPage.Visibility = Visibility.Hidden;
             this.dataResult.Visibility = Visibility.Hidden;
+            this.userInformation.Visibility = Visibility.Hidden;
             this.AboutPage.Visibility = Visibility.Visible;
         }
 
@@ -39,6 +41,7 @@ namespace D2hWPF
             this.GalleryPage.Visibility = Visibility.Hidden;
             this.AboutPage.Visibility = Visibility.Hidden;
             this.dataResult.Visibility = Visibility.Hidden;
+            this.userInformation.Visibility = Visibility.Hidden;
             this.ContactPage.Visibility = Visibility.Visible;
         }
 
@@ -46,6 +49,7 @@ namespace D2hWPF
         {
             this.ContactPage.Visibility = Visibility.Hidden;
             this.AboutPage.Visibility = Visibility.Hidden;
+            this.userInformation.Visibility = Visibility.Hidden;
             this.dataResult.Visibility = Visibility.Hidden;
             this.GalleryPage.Visibility = Visibility.Visible;
         }
@@ -70,13 +74,31 @@ namespace D2hWPF
 
 
 
-            dataResult.ItemsSource = new List<Person>() {
-                new Person(){ Id=1002,Name="Sanket"},
-                new Person(){ Id=23432,Name="Sagar"},
+            var Items = new List<Person>() {
                 new Person(){ Id=435,Name="Atharva",Group="A"},
-                new Person(){ Id=445,Name="Yogesh"},
-                new Person(){ Id=785,Name="Suraj",Group="A"},
             };
+
+            if (Items.Count == 1)
+            {
+                this.dataResult.Visibility = Visibility.Hidden;
+                this.userInformation.Visibility = Visibility.Visible;
+                // Logic to show single user only
+
+                lblUserGroup.Content = Items[0].Group;
+                lblUserId.Content = Items[0].Id;
+                lblUserName.Content = Items[0].Name;
+            }
+            else
+            {
+                this.userInformation.Visibility = Visibility.Hidden;
+                this.dataResult.Visibility = Visibility.Visible;
+                dataResult.ItemsSource = Items;
+            }
+        }
+
+        private void Event(object sender, EventArgs e)
+        {
+            MessageBox.Show("");
         }
     }
 

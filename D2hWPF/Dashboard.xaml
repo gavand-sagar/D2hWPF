@@ -4,16 +4,27 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:D2hWPF"
+        xmlns:userControl="clr-namespace:D2hWPF"
         mc:Ignorable="d"
         Title="Dashboard" Height="450" Width="800">
     <Grid>
-        <Calendar HorizontalAlignment="Left" Margin="109,77,0,0" VerticalAlignment="Top"/>
-        <Slider HorizontalAlignment="Left" Margin="524,138,0,0" VerticalAlignment="Top" Width="120"/>
-        <Ellipse Height="100" Stroke="Black" Width="100">
-            <Ellipse.Fill>
-                <SolidColorBrush Opacity="0.5" Color="Red"></SolidColorBrush>
-            </Ellipse.Fill>
-        </Ellipse>
+
+        <StackPanel>
+
+
+            <ItemsControl ItemsSource="{Binding Users}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="{Binding Id}"></Label>
+                            <Label Content="{Binding Name}"></Label>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+
+        </StackPanel>
 
     </Grid>
 </Window>
